@@ -56,13 +56,13 @@
       },
       "physics-2d": {
         "_value": true,
-        "_option": "physics-2d-box2d"
+        "_option": "physics-2d-builtin"
       },
       "physics-2d-box2d": {
         "_value": true
       },
       "physics-2d-builtin": {
-        "_value": false
+        "_value": "physics-2d-builtin"
       },
       "intersection-2d": {
         "_value": true
@@ -153,7 +153,7 @@
       "marionette",
       "particle",
       "particle-2d",
-      "physics-2d-box2d",
+      "physics-2d-builtin",
       "physics-ammo",
       "primitive",
       "procedural-animation",

@@ -22,7 +22,7 @@ export class PoolManager {
      * 根据预设从对象池中获取对应节点
      */
     public getNode (prefab: Prefab, parent: Node):Node {
-        let name = prefab.name;
+        let name = `${prefab.name}_${prefab.uuid}`;
          //@ts-ignore
          if (!prefab.position) {
             //@ts-ignore
@@ -59,7 +59,7 @@ export class PoolManager {
         if (!node) {
             return;
         }
-        let name = node.name;
+        let name = `${node.name}_${node.uuid}`;
         let pool = null;
         if (this._dictPool.hasOwnProperty(name)) {
             //已有对应的对象池

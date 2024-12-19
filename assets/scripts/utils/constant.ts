@@ -13,6 +13,7 @@ export class Constant {
         NUT: "nut", // 坚果动画
         ZOMBIE_ATTACK: "zombie_attack", // 僵尸攻击动画
         PEASE: "pease", // 豌豆动画
+        SUN: "sun"
     }
 
     static readonly CARD_TYPE = {
@@ -30,6 +31,39 @@ export class Constant {
     }
 
     static readonly PATH = {
-        CARDS: "prefab/cards/"
+        CARDS: "prefab/cards/", // 卡片
+        FIGHT: "prefab/fight/", // 战斗相关资源的路径
+        IMG: "img/"
+    }
+
+    static readonly PREFAB_PATH = {
+        SUNFLOWER: "sunflower", // 太阳花
+        NUT: "nut", // 坚果
+        PEASE: "pease", // 豌豆
+        CHERRY: "cherry", // 樱桃
+        SUN: "sun", // 太阳
+    }
+
+    static readonly EVENT_TYPE = {
+        CAPTURE_SUN: "capture_sun", // 用户捕获（点击）阳光事件
+    }
+
+    // 碰撞分组
+    static readonly RIGID_GROUP = {
+        DEFAULT: 1<<0, // 默认
+        ZOMBIE: 1<<1, // 僵尸
+        PLANT: 1<<2, // 植物
+        BULLET: 1<<3, // 子弹
+        CARD: 1<<4, // 卡片
+        TILE: 1<<5, // 地板
+    }
+
+//     碰撞事件
+    static readonly COLLISION_TYPE = {
+        ZOMBIE_PLANT: "zombie_plant", // 僵尸和植物发生碰撞
+        ZOMBIE_BULLET: "zombie_bullet", // 僵尸和子弹发生碰撞
+        PLANT_BULLET: "plant_bullet", // 植物和子弹发生碰撞
+        PLANT_TILE: "plant_tile", // 植物和地板发生碰撞
+        CARD_TILE: "card_tile", // 卡片和地板发生碰撞
     }
 }

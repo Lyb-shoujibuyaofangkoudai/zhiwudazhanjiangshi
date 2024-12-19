@@ -1,9 +1,10 @@
-import { _decorator, Component, Node,animation } from 'cc';
+import { _decorator, Component, Node,animation, RigidBody2D } from 'cc';
 import { Actor } from "db://assets/scripts/fight/Actor";
-const { ccclass, property } = _decorator;
+const { ccclass,requireComponent, property } = _decorator;
 
 @ccclass('Zombie')
-export class Zombie extends Actor {
+@requireComponent(Actor)
+export class Zombie extends Component {
 
     animationController:animation.AnimationController = null;
     start() {

@@ -19,13 +19,24 @@
       {
         "index": 3,
         "name": "bullet"
+      },
+      {
+        "index": 4,
+        "name": "CARD"
+      },
+      {
+        "index": 5,
+        "name": "TILE"
       }
     ],
     "collisionMatrix": {
-      "0": 1,
+      "0": 0,
       "1": 12,
       "2": 2,
-      "3": 2
+      "3": 2,
+      "4": 32,
+      "5": 16
     }
-  }
+  },
+  "custom_joint_texture_layouts": []
 }

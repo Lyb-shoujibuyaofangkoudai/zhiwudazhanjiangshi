@@ -37,10 +37,13 @@
       },
       {
         "__id__": 12
+      },
+      {
+        "__id__": 14
       }
     ],
     "_prefab": {
-      "__id__": 14
+      "__id__": 16
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -145,26 +148,6 @@
     "fileId": "f7gQFNM6tM67Ak+EovmkBp"
   },
   {
-    "__type__": "3de2eshJSBF3pXMuDmV0TbT",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 7
-    },
-    "hp": 100,
-    "atk": 0,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "e4MVa7Q2VBSaV1DOgn0BcQ"
-  },
-  {
     "__type__": "cc.Animation",
     "_name": "",
     "_objFlags": 0,
@@ -174,7 +157,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 9
+      "__id__": 7
     },
     "playOnLoad": false,
     "_clips": [
@@ -203,7 +186,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 11
+      "__id__": 9
     },
     "tag": 0,
     "_group": 4,
@@ -237,7 +220,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 13
+      "__id__": 11
     },
     "enabledContactListener": true,
     "bullet": false,
@@ -262,6 +245,44 @@
     "fileId": "699TjEOrxIapvGPYViMFdA"
   },
   {
+    "__type__": "d1f50SLhglNRYFD1iKy3DAt",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 13
+    },
+    "hp": 100,
+    "atk": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "82QeOY3cZDj4RH1Byuy9ae"
+  },
+  {
+    "__type__": "3de2eshJSBF3pXMuDmV0TbT",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 15
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "1fS9G/alFCMpHc7UFjUiU1"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -270,7 +291,6 @@
       "__id__": 0
     },
     "fileId": "00p+kIOihL+KBh3xJKkVhm",
-    "instance": null,
     "targetOverrides": null
   }
 ]

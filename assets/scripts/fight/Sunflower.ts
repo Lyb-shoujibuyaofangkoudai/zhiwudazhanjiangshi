@@ -1,13 +1,17 @@
 import { _decorator, Component, Node,tween,Vec3,Prefab } from 'cc';
 import { Actor } from "db://assets/scripts/fight/Actor";
 import { Constant } from "db://assets/scripts/utils/constant";
-const { ccclass, property } = _decorator;
+const { ccclass, requireComponent } = _decorator;
 
 @ccclass('Sunflower')
-export class Sunflower extends Actor {
+@requireComponent(Actor)
+export class Sunflower extends Component {
+    actor: Actor | null = null;
+
 
     start() {
-        super.startAnimation(Constant.ANIMATION.SUNFLOWER)
+        this.actor = this.node.getComponent(Actor);
+        this.actor.startAnimation(Constant.ANIMATION.SUNFLOWER)
     }
 }
 
