@@ -14,6 +14,7 @@ import {
 } from 'cc';
 import { ClientEvent } from '../framework/ClientEvent';
 import { Constant } from "db://assets/scripts/utils/constant";
+import { ColliderManger } from "db://assets/scripts/framework/ColliderManger";
 
 const { ccclass, property } = _decorator;
 
@@ -23,6 +24,7 @@ export class Actor extends Component {
         if ( !value ) {
             this.rigidbody.enabledContactListener = value
             this.collider.off(Contact2DType.BEGIN_CONTACT, this.onTriggerEnter, this);
+            this.collider.off(Contact2DType.END_CONTACT, this.onTriggerEnter, this);
         }
         this._enabledContactListener = value;
     }
@@ -49,6 +51,7 @@ export class Actor extends Component {
         // this.collider.size = size(this.node.getComponent(UITransform).width,this.node.getComponent(UITransform).height)
         this.updateCollider()
         this.collider.on(Contact2DType.BEGIN_CONTACT, this.onTriggerEnter, this);
+        this.collider.on(Contact2DType.END_CONTACT, this.onTriggerExit, this);
     }
 
     start() {
@@ -57,6 +60,7 @@ export class Actor extends Component {
 
     onDestroy() {
         this.collider.off(Contact2DType.BEGIN_CONTACT, this.onTriggerEnter, this);
+        this.collider.off(Contact2DType.END_CONTACT, this.onTriggerExit, this);
     }
 
     setRigidBodyType(type: ERigidBody2DType) {
@@ -74,7 +78,13 @@ export class Actor extends Component {
     }
 
     onTriggerEnter(curNodeCollider:BoxCollider2D,itemCollider:BoxCollider2D) {
-        console.log("开始碰撞", curNodeCollider.group, itemCollider.group,this.node.name)
+        console.log("开始碰撞", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
+        ColliderManger.instance.handleColliderEnter(curNodeCollider,itemCollider,`${curNodeCollider.group}_${itemCollider.group}`)
+    }
+
+    onTriggerExit(curNodeCollider:BoxCollider2D,itemCollider:BoxCollider2D) {
+        console.log("碰撞结束：", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
+        ColliderManger.instance.handleColliderExit(itemCollider,curNodeCollider,`${itemCollider.group}_${curNodeCollider.group}`)
     }
 
     updateCollider() {

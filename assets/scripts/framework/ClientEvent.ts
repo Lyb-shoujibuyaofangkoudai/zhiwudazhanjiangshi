@@ -63,8 +63,8 @@ export class ClientEvent {
 
         let args1 = [];
         let i: number;
-        for (i = 1; i < args.length; i++) {
-            args1.push(args[i]);
+        for (i = 1; i < arguments.length; i++) {
+            args1.push(arguments[i]);
         }
 
         if (!handlerList) {

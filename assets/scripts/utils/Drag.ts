@@ -4,7 +4,11 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Drag')
 export class Drag extends Component {
+    set canDrag(value: boolean) {
+        this._canDrag = value;
+    }
     private _nodeNeedBack = false // 拖拽结束后的节点是否需要回归原位
+    private _canDrag = false // 是否允许拖动
     @property({
         type: CCBoolean,
         displayName: "结束回归原位",
@@ -44,13 +48,14 @@ export class Drag extends Component {
 
     _dragMove(event: EventTouch) {
         // console.log("拖拽开始移动", )
+        if(!this._canDrag) return
         const x = event.getUILocation().x
         const y = event.getUILocation().y - this._nodeHeight / 2
         this.node.setWorldPosition(x,y,1)
     }
 
     _dragEnd(event: EventTouch) {
-        if(this._nodeNeedBack)
+        if(this._nodeNeedBack && this._canDrag)
             this.node.setWorldPosition(this._originalWorldPosition.x, this._originalWorldPosition.y,this._originalWorldPosition.z)
     }
 

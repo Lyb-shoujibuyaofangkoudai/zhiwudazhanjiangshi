@@ -10,5 +10,6 @@ export class UiManger extends Component {
     init() {
         const node = UiSunCount.createSunCount()
         this.node.parent.addChild(node)
+        return node
     }
 }

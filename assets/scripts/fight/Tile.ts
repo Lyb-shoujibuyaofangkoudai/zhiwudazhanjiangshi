@@ -17,7 +17,8 @@ export class Tile extends Component {
         const uiTransform = this.node.getComponent(UITransform);
         actor.setGroup(Constant.RIGID_GROUP.TILE)
         actor.enabledContactListener = false
-        actor.setColliderSize(uiTransform.width / 1.2, uiTransform.height / 1.2)
+        // 设置碰撞体大小，设置小一点，防止在移动卡片到地板上时会出现卡片和多个地板同时碰撞的情况
+        actor.setColliderSize(uiTransform.width / 2, uiTransform.height / 2)
     }
 
     setTilePosition(row, col) {
