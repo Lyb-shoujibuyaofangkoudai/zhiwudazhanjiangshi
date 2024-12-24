@@ -19,13 +19,6 @@ export class UiSunCount extends Component {
     private _count = 0;
     private _lb: Label = null;
 
-    start() {
-
-    }
-
-    update(deltaTime: number) {
-
-    }
 
     static createSunCount(): Node {
         const curNode = new Node('sunCount');

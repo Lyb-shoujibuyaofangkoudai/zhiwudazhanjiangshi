@@ -23,7 +23,11 @@ export class Constant {
         ZOMBIE_ATTACK: "zombie_attack",
         // 豌豆动画
         PEASE: "pease",
-        SUN: "sun"
+        SUN: "sun",
+    //     樱桃ide动画
+        CHERRY_IDE: "cherry_ide",
+    //     樱桃攻击动画
+        CHERRY_ATTACK: "cherry_attack",
     }
 
     static readonly CARD_TYPE = {
@@ -41,7 +45,7 @@ export class Constant {
         // 太阳花卡片价格
         [Constant.CARD_TYPE.SUNFLOWER]: 50,
         // 坚果卡片价格
-        [Constant.CARD_TYPE.NUT]: 100,
+        [Constant.CARD_TYPE.NUT]: 50,
         // 豌豆卡片价格
         [Constant.CARD_TYPE.PEASE]: 150,
         // 樱桃卡片价格
@@ -73,7 +77,9 @@ export class Constant {
         // 阳光数量变化事件
         SUN_COUNT_CHANGE: "sun_count_change",
         // 种植植物到地板上
-        PLANT_TO_TILE: "plant_to_tile"
+        PLANT_TO_TILE: "plant_to_tile",
+    //     设置植物种植目标tile节点事件
+        SET_TARGET_TILE: "set_target_tile",
     }
 
     // 碰撞分组

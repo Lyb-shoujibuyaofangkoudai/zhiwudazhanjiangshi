@@ -38,7 +38,7 @@ export class MapManager extends Component {
                 const tile = PoolManager.instance.getNode(this.tilePrefab,this.planeMapNode)
                 tile.name = `tile_${i}_${j}`
                 tile.getComponent(Tile).setTilePosition(i,j)
-                tile.getComponent(UIOpacity).opacity = 10 * i + j * 5; // 设置透明度
+                tile.getComponent(UIOpacity).opacity = 0; // 设置透明度
             }
          }
     }

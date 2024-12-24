@@ -20,6 +20,7 @@ export class GameManager extends Component {
         const playDataComp = this.node.addComponent(PlayData);
         this.uiManger = this.getComponent(UiManger)
         playDataComp.sunCountUi = this.uiManger.init()
+        playDataComp.plantContainerNode = this.getPlaneContainerNode()
         this.mapManager.initPlantTileGrid()
         this.mapManager.initCards()
         this.mapManager.initSun()
@@ -27,9 +28,6 @@ export class GameManager extends Component {
         // AudioManager.instance.playMusic(Constant.SOUND.BGN, true) // 播放bgm
     }
 
-    update(deltaTime: number) {
-
-    }
 
     showDebug(isDebug = true) {
         if ( isDebug ) {
@@ -41,6 +39,16 @@ export class GameManager extends Component {
         } else {
             // 关闭调试区域
             PhysicsSystem2D.instance.debugDrawFlags = EPhysics2DDrawFlags.None;
+        }
+    }
+
+    getPlaneContainerNode() {
+
+        for ( let i = 0; i < this.node.parent.children.length; i++ ) {
+            const node = this.node.parent.children[i]
+            if(node.name === "bgNode") {
+                return node.getChildByName("planeContent")
+            }
         }
     }
 

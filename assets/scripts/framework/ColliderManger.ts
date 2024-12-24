@@ -1,6 +1,7 @@
 import { BoxCollider2D, Prefab, UIOpacity, resources } from "cc";
 import { Constant } from "db://assets/scripts/utils/constant";
 import { PoolManager } from "db://assets/scripts/framework/PoolManager";
+import { ClientEvent } from "db://assets/scripts/framework/ClientEvent";
 
 // 碰撞管理器
 export class ColliderManger {
@@ -48,14 +49,8 @@ export class ColliderManger {
                 // console.log("卡片和地板发生碰撞：", cardNodeCollider, tileItemCollider)
                 const node = tileItemCollider.node
                 node.getComponent(UIOpacity).opacity = 100;
-                // const prefabName = node.name.split("_")[1]
-                // resources.load(Constant.PATH.FIGHT + prefabName.toLowerCase(), Prefab, (err, prefab) => {
-                //     if(err) {
-                //         console.error(`加载预制体${prefabName.toLowerCase()}失败`, err);
-                //         return;
-                //     }
-                //     PoolManager.instance.getNode(prefab, node)
-                // })
+                ClientEvent.dispatchEvent(Constant.EVENT_TYPE.SET_TARGET_TILE,node)
+
             },
             end: (cardNodeCollider: BoxCollider2D, tileItemCollider: BoxCollider2D) => {
                 // console.log("卡片和地板结束碰撞：", cardNodeCollider, tileItemCollider)

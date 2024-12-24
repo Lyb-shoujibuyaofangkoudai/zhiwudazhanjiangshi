@@ -56,6 +56,7 @@ export class Actor extends Component {
 
     start() {
         this.setRigidBodyType(ERigidBody2DType.Static) // 默认静态
+        this.startDefaultAnimation()
     }
 
     onDestroy() {
@@ -70,6 +71,12 @@ export class Actor extends Component {
     setGroup(group: number) {
         if ( this.rigidbody ) this.rigidbody.group = group
         if ( this.collider ) this.collider.group = group
+    }
+
+    startDefaultAnimation() {
+        const anim = this.node.getComponent(Animation)
+        if(!anim?.clips) return
+        anim.play(anim.clips[0].name) // 默认播放第一个动画
     }
 
     startAnimation(name: string) {
