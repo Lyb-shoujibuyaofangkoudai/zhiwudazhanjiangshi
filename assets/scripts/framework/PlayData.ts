@@ -23,7 +23,7 @@ export class PlayData extends Component {
         this._sunCountUi = value;
     }
 
-    private _sunCount = 0 // 当前阳光数量
+    private _sunCount = 300 // 当前阳光数量
     @property({ type: Node })
     private _sunCountUi = null
 

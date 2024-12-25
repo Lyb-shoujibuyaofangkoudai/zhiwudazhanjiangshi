@@ -2,6 +2,8 @@ import { BoxCollider2D, Prefab, UIOpacity, resources } from "cc";
 import { Constant } from "db://assets/scripts/utils/constant";
 import { PoolManager } from "db://assets/scripts/framework/PoolManager";
 import { ClientEvent } from "db://assets/scripts/framework/ClientEvent";
+import { Actor } from "db://assets/scripts/fight/Actor";
+import { Zombie } from "db://assets/scripts/fight/Zombie";
 
 // 碰撞管理器
 export class ColliderManger {
@@ -22,28 +24,17 @@ export class ColliderManger {
         },
         [Constant.COLLISION_TYPE.ZOMBIE_BULLET]: {
             enter: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("僵尸和子弹发生碰撞：", curNodeCollider, itemCollider)
+                console.log("僵尸和子弹发生碰撞：", curNodeCollider.node.name, itemCollider.node.name)
+                const bulletAtk = itemCollider.node.getComponent(Actor).actorProperty.attack
+                curNodeCollider.node.getComponent(Actor).actorProperty.hp -= bulletAtk // 僵尸血量减少
+                curNodeCollider.node.getComponent(Zombie).changeAnimation()
+                PoolManager.instance.putNode(itemCollider.node)
             },
             end: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
                 console.log("僵尸和子弹结束碰撞：", curNodeCollider, itemCollider)
             }
         },
-        [Constant.COLLISION_TYPE.PLANT_BULLET]: {
-            enter: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("植物和子弹发生碰撞：", curNodeCollider, itemCollider)
-            },
-            end: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("植物和子弹结束碰撞：", curNodeCollider, itemCollider)
-           }
-        },
-        [Constant.COLLISION_TYPE.PLANT_TILE]: {
-            enter: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("植物和地板发生碰撞：", curNodeCollider, itemCollider)
-            },
-            end: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("植物和地板结束碰撞：", curNodeCollider, itemCollider)
-            }
-        },
+
         [Constant.COLLISION_TYPE.CARD_TILE]: {
             enter: (cardNodeCollider: BoxCollider2D, tileItemCollider: BoxCollider2D) => {
                 // console.log("卡片和地板发生碰撞：", cardNodeCollider, tileItemCollider)

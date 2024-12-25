@@ -15,6 +15,7 @@ import {
 import { ClientEvent } from '../framework/ClientEvent';
 import { Constant } from "db://assets/scripts/utils/constant";
 import { ColliderManger } from "db://assets/scripts/framework/ColliderManger";
+import { ActorProperty } from "db://assets/scripts/fight/ActorProperty";
 
 const { ccclass, property } = _decorator;
 
@@ -29,16 +30,8 @@ export class Actor extends Component {
         this._enabledContactListener = value;
     }
 
-    private _hp = 100;
-    private _atk = 10;
+    actorProperty : ActorProperty = new ActorProperty();
 
-    set hp(value: number) {
-        this._hp = value;
-    }
-
-    set atk(value: number) {
-        this._atk = value;
-    }
 
     rigidbody: RigidBody2D = null
     collider: BoxCollider2D = null
@@ -85,12 +78,12 @@ export class Actor extends Component {
     }
 
     onTriggerEnter(curNodeCollider:BoxCollider2D,itemCollider:BoxCollider2D) {
-        console.log("开始碰撞", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
+        // console.log("开始碰撞", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
         ColliderManger.instance.handleColliderEnter(curNodeCollider,itemCollider,`${curNodeCollider.group}_${itemCollider.group}`)
     }
 
     onTriggerExit(curNodeCollider:BoxCollider2D,itemCollider:BoxCollider2D) {
-        console.log("碰撞结束：", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
+        // console.log("碰撞结束：", curNodeCollider.node.name, itemCollider.node.name,this.node.name)
         ColliderManger.instance.handleColliderExit(itemCollider,curNodeCollider,`${itemCollider.group}_${curNodeCollider.group}`)
     }
 

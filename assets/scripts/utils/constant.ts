@@ -69,9 +69,17 @@ export class Constant {
         CHERRY: "cherry",
         // 太阳
         SUN: "sun",
+    //     子弹
+        BULLET: "bullet",
+    //     僵尸
+        ZOMBIE: "zombie",
     }
 
     static readonly EVENT_TYPE = {
+        // 游戏开始
+        START: "start",
+        // 游戏结束
+        OVER: "over",
         // 用户捕获（点击）阳光事件
         CAPTURE_SUN: "capture_sun",
         // 阳光数量变化事件
@@ -80,6 +88,13 @@ export class Constant {
         PLANT_TO_TILE: "plant_to_tile",
     //     设置植物种植目标tile节点事件
         SET_TARGET_TILE: "set_target_tile",
+    }
+
+    static readonly GAME_OVER_TYPE = {
+        // 游戏胜利
+        WIN: "win",
+        // 游戏失败
+        LOSE: "lose",
     }
 
     // 碰撞分组
@@ -104,11 +119,8 @@ export class Constant {
         ZOMBIE_PLANT: `${Constant.RIGID_GROUP.ZOMBIE}_${Constant.RIGID_GROUP.PLANT}`,
         // 僵尸和子弹发生碰撞
         ZOMBIE_BULLET: `${Constant.RIGID_GROUP.ZOMBIE}_${Constant.RIGID_GROUP.BULLET}`,
-        // 植物和子弹发生碰撞
-        PLANT_BULLET: `${Constant.RIGID_GROUP.PLANT}_${Constant.RIGID_GROUP.BULLET}`,
-        // 植物和地板发生碰撞
-        PLANT_TILE: `${Constant.RIGID_GROUP.PLANT}_${Constant.RIGID_GROUP.TILE}`,
         // 卡片和地板发生碰撞
         CARD_TILE: `${Constant.RIGID_GROUP.CARD}_${Constant.RIGID_GROUP.TILE}`,
     }
+
 }

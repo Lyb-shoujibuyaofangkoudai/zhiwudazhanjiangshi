@@ -52,7 +52,7 @@ export class Sun extends Component {
         if (!sunPrefab || !sunAreaNode) return;
         const sunNode = PoolManager.instance.getNode(sunPrefab, sunAreaNode);
         sunNode.addComponent(Sun)
-        sunNode.getComponent(Actor).atk = 0
+        sunNode.getComponent(Actor).actorProperty.attack = 0
         // 需要这样子获取实例，不然this指向会有问题
         const sunComponent = sunNode.getComponent(Sun);
         sunComponent._sunAreaNode = sunAreaNode;
