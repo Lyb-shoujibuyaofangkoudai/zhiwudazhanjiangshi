@@ -20,6 +20,11 @@ export class ActorProperty {
      */
     attack: number = 10;
 
+    /**
+     * 价格
+     */
+    price: number = 0
+
 
     /**
      * 获取血量百分比

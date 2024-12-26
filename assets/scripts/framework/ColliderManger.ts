@@ -15,23 +15,29 @@ export class ColliderManger {
 
     static COLLIDER_MAP = {
         [Constant.COLLISION_TYPE.ZOMBIE_PLANT]: {
-            enter: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("僵尸和植物发生碰撞：", curNodeCollider, itemCollider)
+            enter: (zombieNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
+                // console.log("僵尸和植物发生碰撞：", zombieNodeCollider, itemCollider)
+                const zombieScript = zombieNodeCollider.node.getComponent(Zombie)
+                // 僵尸停止移动
+                zombieScript.canWalk = false
+                zombieScript.changeAnimation()
+                zombieScript.attack(itemCollider.node)
+
             },
             end: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("僵尸和植物结束碰撞：", curNodeCollider, itemCollider)
+                // console.log("僵尸和植物结束碰撞：", curNodeCollider, itemCollider)
             }
         },
         [Constant.COLLISION_TYPE.ZOMBIE_BULLET]: {
             enter: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("僵尸和子弹发生碰撞：", curNodeCollider.node.name, itemCollider.node.name)
+                // console.log("僵尸和子弹发生碰撞：", curNodeCollider.node.name, itemCollider.node.name)
                 const bulletAtk = itemCollider.node.getComponent(Actor).actorProperty.attack
                 curNodeCollider.node.getComponent(Actor).actorProperty.hp -= bulletAtk // 僵尸血量减少
                 curNodeCollider.node.getComponent(Zombie).changeAnimation()
                 PoolManager.instance.putNode(itemCollider.node)
             },
             end: (curNodeCollider: BoxCollider2D, itemCollider: BoxCollider2D) => {
-                console.log("僵尸和子弹结束碰撞：", curNodeCollider, itemCollider)
+                // console.log("僵尸和子弹结束碰撞：", curNodeCollider, itemCollider)
             }
         },
 

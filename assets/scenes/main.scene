@@ -189,7 +189,7 @@
     "_fovAxis": 0,
     "_orthoHeight": 360,
     "_near": 1,
-    "_far": 1000,
+    "_far": 10000,
     "_color": {
       "__type__": "cc.Color",
       "r": 0,

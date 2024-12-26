@@ -22,10 +22,13 @@ export class Pease extends Component {
                 error("加载子弹预制体失败：",err)
                 return
             }
-            const bullet = PoolManager.instance.getNode(res, this.node)
-            const bulletScript =  bullet.getComponent(Bullet)
-            bulletScript.parentNode = this.node
-            bulletScript.originPos = new Vec3(this.node.worldPosition.x + bullet.getComponent(UITransform).width * 2 + 8, this.node.worldPosition.y + 23, this.node.worldPosition.z)
+            const cb = () => {
+                const bullet = PoolManager.instance.getNode(res, this.node)
+                const bulletScript =  bullet.getComponent(Bullet)
+                bulletScript.parentNode = this.node
+                bulletScript.originPos = new Vec3(this.node.worldPosition.x + bullet.getComponent(UITransform).width * 2 + 8, this.node.worldPosition.y + 23, this.node.worldPosition.z)
+            }
+            this.schedule(cb,1)
         })
     }
 

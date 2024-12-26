@@ -45,7 +45,7 @@ export class MapManager extends Component {
             })
             this.scheduleOnce(() => {
                 this.initZombie()
-            }, 1);
+            }, 5);
         }
     }
 

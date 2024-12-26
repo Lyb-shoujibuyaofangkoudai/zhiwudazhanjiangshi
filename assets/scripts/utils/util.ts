@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node, UITransform, view } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("util")
@@ -972,5 +972,44 @@ export class util {
     public static getRandomDirector () {
         let v = Math.random();
         return v > 0.5 ? 1 : -1
+    }
+
+    /**
+     * 检查节点是否超出屏幕之外
+     * @param node 要检查的节点
+     * @returns 如果节点超出屏幕则返回 true，否则返回 false
+     */
+    public static isNodeOutOfScreen(node: Node): boolean {
+        // 获取节点的世界包围盒
+        let worldBounds = node.getComponent(UITransform).getBoundingBoxToWorld();
+        // 获取相机视口大小
+        let visibleSize = view.getVisibleSize();
+        // 检查包围盒是否在视口范围内
+        return (
+            //     超出屏幕最右边
+            worldBounds.xMin > visibleSize.width ||
+            //     超出屏幕最左边
+            worldBounds.xMax < 0 ||
+            //     超出屏幕底部
+            worldBounds.yMin < 0 ||
+            //     超出屏幕顶部
+            worldBounds.yMax > visibleSize.height
+        );
+
+    }
+
+    /**
+     * 防抖函数
+     */
+    public static debounce (fn: Function, delay: number) {
+        let timer: number = null;
+        return function (...args: any[]) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                fn.apply(this, args);
+            }, delay);
+        }
     }
 }

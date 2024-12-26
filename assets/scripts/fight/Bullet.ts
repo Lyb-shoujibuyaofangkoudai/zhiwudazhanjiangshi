@@ -1,6 +1,8 @@
-import { _decorator, Component, Node, Vec3 } from 'cc';
+import { _decorator, Camera, Component, Node, UITransform, v2, Vec3, view } from 'cc';
 import { Actor } from "db://assets/scripts/fight/Actor";
 import { Constant } from "db://assets/scripts/utils/constant";
+import { PoolManager } from "db://assets/scripts/framework/PoolManager";
+import { util } from "db://assets/scripts/utils/util";
 const { ccclass,requireComponent, property } = _decorator;
 
 @ccclass('Bullet')
@@ -38,6 +40,7 @@ export class Bullet extends Component {
     start() {
         this.actor = this.node.getComponent(Actor);
         this.actor.setGroup(Constant.RIGID_GROUP.BULLET) // 设置碰撞体分组
+        this.actor.actorProperty.attack = 20
     }
 
     update(deltaTime: number) {
@@ -48,7 +51,13 @@ export class Bullet extends Component {
     move(dt: number) {
         this.originPos.x += this.speed * dt
         this.node.setWorldPosition(this.originPos)
+        if(util.isNodeOutOfScreen(this.node)) {
+            PoolManager.instance.putNode(this.node)
+        }
     }
+
+
+
 }
 
 

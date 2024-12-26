@@ -68,6 +68,9 @@ export class PlayData extends Component {
             }
             const node = PoolManager.instance.getNode(prefab, this.plantContainerNode)
             node.setWorldPosition(this.targetTile.worldPosition)
+        //     扣除阳光
+            this._sunCount -= Constant.CARD_PRICE[prefabName]
+            this.sunCountUi.getComponent(UiSunCount).count = this._sunCount
         })
     }
 
